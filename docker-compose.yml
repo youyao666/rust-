@@ -1,0 +1,32 @@
+services:
+  trojan-rust:
+    image: ghcr.io/yourusername/trojan-rust:main
+    container_name: trojan-rust
+    restart: unless-stopped
+    command: ["-c", "/etc/trojan-rust/config.toml"]
+    ports:
+      - "443:443/tcp"
+      - "443:443/udp"
+    volumes:
+      - ./config/config.toml:/etc/trojan-rust/config.toml:ro
+      - ./certs:/etc/trojan-rust/certs:ro
+    environment:
+      RUST_LOG: info
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    read_only: true
+    tmpfs:
+      - /tmp:noexec,nosuid,size=10m
+    ulimits:
+      nofile:
+        soft: 1048576
+        hard: 1048576

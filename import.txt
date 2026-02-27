@@ -1,0 +1,39 @@
+commit refs/heads/main
+author youyao666 <youyao666@users.noreply.github.com> now
+committer youyao666 <youyao666@users.noreply.github.com> now
+encoding UTF-8
+
+Initial commit: Trojan-Rust with XTLS-Reality support
+
+from
+0000000000000000000000000000000000000000
+M 100644 blob .dockerignore
+M 100644 blob .github/workflows/docker-publish.yml
+M 100644 blob Cargo.lock
+M 100644 blob Cargo.toml
+M 100644 blob DEPLOYMENT_GUIDE.md
+M 100644 blob Dockerfile
+M 100644 blob docker-compose.yml
+M 100644 blob config/config.toml
+M 100644 blob scripts/gen-certs.sh
+M 100644 blob src/config.rs
+M 100644 blob src/error.rs
+M 100644 blob src/lib.rs
+M 100644 blob src/main.rs
+M 100644 blob src/protocol/address.rs
+M 100644 blob src/protocol/command.rs
+M 100644 blob src/protocol/header.rs
+M 100644 blob src/protocol/mod.rs
+M 100644 blob src/proxy/fallback.rs
+M 100644 blob src/proxy/mod.rs
+M 100644 blob src/proxy/relay.rs
+M 100644 blob src/proxy/session.rs
+M 100644 blob src/proxy/tcp.rs
+M 100644 blob src/proxy/udp.rs
+M 100644 blob src/reality/handshake.rs
+M 100644 blob src/reality/mod.rs
+M 100644 blob src/reality/splice.rs
+M 100644 blob src/reality/state_machine.rs
+M 100644 blob src/reality/vision.rs
+M 100644 blob src/server.rs
+M 100644 blob src/tls.rs

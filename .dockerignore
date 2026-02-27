@@ -1,0 +1,11 @@
+target/
+.git/
+.gitignore
+.github/
+*.md
+docker-compose.yml
+scripts/
+tests/
+certs/
+config/*.pem
+config/*.key

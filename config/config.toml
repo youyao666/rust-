@@ -1,0 +1,36 @@
+# Trojan-Rust 服务端配置文件
+
+# 监听地址
+bind_addr = "0.0.0.0:443"
+
+# TLS 证书配置
+tls_cert = "/etc/trojan-rust/certs/cert.pem"
+tls_key = "/etc/trojan-rust/certs/key.pem"
+
+# 用户密码列表 (SHA-224 哈希值，小写十六进制)
+# 可使用 echo -n "your_password" | sha224sum 生成
+passwords = [
+    "5fd924625f6ab16a19cc9807c7c506ae1813490e4ba675f843d5a10e",
+]
+
+# 日志级别: trace, debug, info, warn, error
+log_level = "info"
+
+# TCP 连接超时 (秒)
+tcp_timeout = 300
+
+# UDP 会话超时 (秒)
+udp_timeout = 60
+
+# UDP 中继本地绑定地址（建议保持 0.0.0.0:0 让系统自动分配端口）
+udp_bind_addr = "0.0.0.0:0"
+
+# 最大并发连接数
+max_connections = 1024
+
+# 回落地址（Fallback）
+# 当协议校验失败（密码错误、非 Trojan 流量、HTTP 探测等）时，
+# 服务器会将客户端原始数据无缝转发到此地址，而非断开连接。
+# 这可以有效对抗主动探测（Active Probing）和 DPI 检测。
+# 通常设置为本机运行的 Web 服务（如 Nginx/Caddy）。
+fallback_addr = "127.0.0.1:80"
