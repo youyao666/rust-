@@ -1,0 +1,63 @@
+[package]
+name = "trojan-rust"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A lightweight, high-performance Trojan proxy server in Rust"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/yourusername/trojan-rust"
+keywords = ["trojan", "proxy", "vpn", "rust", "tokio"]
+categories = ["network-programming", "command-line-utilities"]
+readme = "README.md"
+rust-version = "1.75"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+debug = false
+
+[profile.release.build-override]
+opt-level = 3
+
+[dependencies]
+tokio = { version = "1.35", features = [
+    "rt-multi-thread",
+    "macros",
+    "net",
+    "io-util",
+    "time",
+    "sync",
+] }
+tokio-rustls = "0.25"
+rustls = { version = "0.22", default-features = false, features = [
+    "tls12",
+    "ring",
+] }
+rustls-pemfile = "2.0"
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+thiserror = "1.0"
+anyhow = "1.0"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = [
+    "env-filter",
+    "fmt",
+] }
+sha2 = "0.10"
+hex = "0.4"
+bytes = "1.5"
+async-trait = "0.1"
+clap = { version = "4.4", features = ["derive"] }
+
+[dev-dependencies]
+tokio-test = "0.4"
+criterion = { version = "0.5", features = ["async_tokio"] }
+tempfile = "3.9"
+pretty_assertions = "1.4"
+
+[[bench]]
+name = "throughput"
+harness = false
